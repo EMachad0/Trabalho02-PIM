@@ -19,7 +19,7 @@ def apply_kernel(img, kernel):
 
 
 def question_i():
-    img = cv2.imread('imagens/Lua1_gray.jpg', cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread('imagens/entrada/Lua1_gray.jpg', cv2.IMREAD_GRAYSCALE)
 
     mean_kernel_3 = np.full((3, 3), 1 / 9)
     mean_kernel_5 = np.full((5, 5), 1 / 9)
@@ -27,12 +27,12 @@ def question_i():
     img_3 = apply_kernel(img, mean_kernel_3)
     img_5 = apply_kernel(img, mean_kernel_5)
 
-    cv2.imwrite('imagens/1_a_3.png', img_3)
-    cv2.imwrite('imagens/1_a_5.png', img_5)
+    cv2.imwrite('imagens/saida/1_a_3.png', img_3)
+    cv2.imwrite('imagens/saida/1_a_5.png', img_5)
 
 
 def question_ii():
-    img = cv2.imread('imagens/Lua1_gray.jpg', cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread('imagens/entrada/Lua1_gray.jpg', cv2.IMREAD_GRAYSCALE)
 
     def create_gaussian_kernel(size, sigma):
         gaussian_kernel = np.zeros((size, size))
@@ -49,8 +49,8 @@ def question_ii():
     img_06 = apply_kernel(img, gaussian_kernel_06)
     img_10 = apply_kernel(img, gaussian_kernel_10)
 
-    cv2.imwrite('imagens/1_b_06.png', img_06)
-    cv2.imwrite('imagens/1_b_10.png', img_10)
+    cv2.imwrite('imagens/saida/1_b_06.png', img_06)
+    cv2.imwrite('imagens/saida/1_b_10.png', img_10)
 
 
 def question_iii():
