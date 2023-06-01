@@ -4,7 +4,7 @@ import numpy as np
 
 def apply_kernel(img, kernel):
     sz = kernel.shape[0] // 2
-    
+
     # add mirror board
     img = cv2.copyMakeBorder(img, sz, sz, sz, sz, cv2.BORDER_REFLECT)
 
@@ -56,7 +56,6 @@ def question_ii():
     cv2.imwrite('imagens/saida/1_b_06.png', img_06)
     cv2.imwrite('imagens/saida/1_b_10_a.png', img_10_a)
     cv2.imwrite('imagens/saida/1_b_10_b.png', img_10_b)
-
 
 
 if __name__ == '__main__':
