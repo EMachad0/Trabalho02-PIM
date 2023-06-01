@@ -8,14 +8,16 @@ def apply_kernel(img, kernel):
     # add mirror board
     img = cv2.copyMakeBorder(img, sz, sz, sz, sz, cv2.BORDER_REFLECT)
 
+    result = np.zeros_like(img)
+
     for i in range(sz, img.shape[0] - sz):
         for j in range(sz, img.shape[1] - sz):
-            img[i, j] = np.sum(img[i - sz:i + sz + 1, j - sz:j + sz + 1] * kernel)
+            result[i, j] = np.sum(img[i - sz:i + sz + 1, j - sz:j + sz + 1] * kernel)
 
     # Remove mirror board
-    img = img[sz:-sz, sz:-sz]
+    result = result[sz:-sz, sz:-sz]
 
-    return img
+    return result
 
 
 def question_i():
