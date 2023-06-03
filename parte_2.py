@@ -26,7 +26,7 @@ def apply_kernel(img, kernel):
 
 
 def question_i():
-    img = cv2.imread('imagens/entrada/Lua1_gray.jpg', cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread('imagens/entrada/11_test.png', cv2.IMREAD_GRAYSCALE)
 
     a = np.array([[0, 1, 0],
                   [1, -4, 1],
