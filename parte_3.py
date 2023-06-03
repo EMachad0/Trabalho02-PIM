@@ -30,7 +30,6 @@ def apply_kernel(img, kernel):
     output_img = output_img[sz:-sz, sz:-sz]
 
     # Normalize
-    # output_img = np.abs(output_img)
     output_img = (output_img - np.min(output_img)) / (np.max(output_img) - np.min(output_img)) * 255
 
     return output_img.astype(np.uint8)
@@ -121,6 +120,17 @@ def horizontal_components(img):
 
     return pw, sb, sc
 
+def median_filter(img):
+    output_img = np.zeros_like(img, dtype=np.int32)
+
+    for i in range(1, img.shape[0]-1):
+        for j in range(1, img.shape[1]-1):
+            values = img[i - 1:i + 2, j - 1:j + 2]
+            values = np.sort(values, axis=None)
+            output_img[i, j] = values[4]
+
+    return output_img.astype(np.uint8)
+
 
 def create_imgs(img, name):
     gx_pw, gx_sb, gx_sc = vertical_components(img)
@@ -158,7 +168,8 @@ def create_imgs(img, name):
 
 
 if __name__ == '__main__':
-    img_a = cv2.imread('imagens/saida/1_a_3.png', cv2.IMREAD_GRAYSCALE)
+    img_a = cv2.imread('imagens/entrada/Lua1_gray.jpg', cv2.IMREAD_GRAYSCALE)
+    img_a = median_filter(median_filter(img_a))
     img_b = cv2.imread('imagens/entrada/chessboard_inv.png', cv2.IMREAD_GRAYSCALE)
     create_imgs(img_a, 'lua')
     create_imgs(img_b, 'chessboard')
